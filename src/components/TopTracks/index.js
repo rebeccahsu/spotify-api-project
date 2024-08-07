@@ -10,6 +10,10 @@ async function getTopFiveTracks() {
 export default async function TopTracks() {
   const data = await getTopFiveTracks();
 
+  if (!data?.length) {
+    return null;
+  }
+
   return (
     <section className={styles.topTracksSection}>
       <h1>Top 5 Tracks</h1>
