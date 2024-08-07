@@ -1,0 +1,12 @@
+@use "../../styles/utils.scss" as *;
+
+.topTracksSection {
+  @include sectionHorizontalMargin();
+  @include sectionVerticalMargin();
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}

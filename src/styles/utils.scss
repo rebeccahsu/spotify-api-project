@@ -1,0 +1,21 @@
+@use "./mediaQuery.scss" as *;
+
+@mixin sectionHorizontalMargin() {
+  margin-left: calc(100% / 8);
+  margin-right: calc(100% / 8);
+
+  @include md {
+    margin-left: calc(100% / 12);
+    margin-right: calc(100% / 12);
+  }
+
+  @include sm {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@mixin sectionVerticalMargin() {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}

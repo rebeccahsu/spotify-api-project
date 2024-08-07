@@ -1,0 +1,23 @@
+.trackItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  transition: .3s;
+
+  &::hover {
+    background-color: rgba($color: #fff, $alpha: 0.2);
+  }
+
+  .trackImage {
+    filter: grayscale(100%);
+  }
+
+  .info {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

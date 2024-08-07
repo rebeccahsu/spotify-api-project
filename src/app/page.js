@@ -1,3 +1,4 @@
+import TopTracks from "@/components/TopTracks";
 import { cookies } from "next/headers";
 
 export default async function HomePage() {
@@ -6,7 +7,13 @@ export default async function HomePage() {
 
   return (
     <div>
-      
+      {token ? (
+        <div>
+          <TopTracks />
+        </div>
+      ) : (
+        <h1>Not logged in</h1>
+      )}
     </div>
   );
 }

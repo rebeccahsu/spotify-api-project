@@ -1,6 +1,7 @@
 'use client';
 
 import { useProfile } from "../ProfileContext";
+import styles from './header.module.scss';
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
@@ -33,15 +34,15 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       {profile ? (
-        <div>
+        <>
           <p>Hi, {profile.display_name}</p>
 
           <button onClick={handleLogout}>
             Log out
           </button>
-        </div>
+        </>
       ) : (
         <button onClick={handleLogin}>
           Login

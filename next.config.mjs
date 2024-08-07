@@ -4,6 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: 'apod.nasa.gov'
+      },
+      {
+        hostname: 'i.scdn.co'
       }
     ]
   },
