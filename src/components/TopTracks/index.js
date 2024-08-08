@@ -16,7 +16,9 @@ export default async function TopTracks() {
 
   return (
     <section className={styles.topTracksSection}>
-      <h1>Top 5 Tracks</h1>
+      <h1 className={styles.title}>
+        Top 5 Tracks
+      </h1>
 
       <div className={styles.list}>
         {data.map((track) => (
