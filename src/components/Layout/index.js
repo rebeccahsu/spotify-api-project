@@ -1,25 +1,16 @@
+'use client';
+
 import React from 'react';
-import { ProfileProvider } from '../ProfileContext';
 import Header from '../Header';
-import { getUserProfile } from '@/lib/spotify';
+import { Provider } from 'react-redux';
+import { store } from '@/stores';
 
-export default async function Layout({ children }) {
-  const getProfile = async () => {
-    try {
-      const data = await getUserProfile();
-      return data;
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      return null;
-    }
-  }
-
-  const profile = await getProfile();
+export default function Layout({ children }) {
 
   return (
-    <ProfileProvider initialProfile={profile}>
+    <Provider store={store}>
       <Header />
       {children}
-    </ProfileProvider>
+    </Provider>
   );
 }

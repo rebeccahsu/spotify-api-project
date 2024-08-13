@@ -1,7 +1,11 @@
 'use client';
 
-import { useProfile } from "../ProfileContext";
+import { clearProfile, setProfile } from "@/slices/profileSlice";
 import styles from './header.module.scss';
+import { clearTopTracks } from "@/slices/topTracksSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserProfile } from "@/lib/spotify";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
@@ -10,7 +14,7 @@ const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
 const RESPONSE_TYPE = 'code';
 
 export default function Header() {
-  const { profile, setProfile } = useProfile();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     console.log('before login', CLIENT_ID, process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID);
@@ -24,7 +28,8 @@ export default function Header() {
       });
 
       if (response.ok) {
-        setProfile(null);
+        dispatch(clearProfile());
+        dispatch(clearTopTracks());
       } else {
         console.error('Failed to log out');
       }
@@ -32,6 +37,23 @@ export default function Header() {
       console.error('Error during logout:', error);
     }
   };
+
+
+  const profile = useSelector((state) => state.profile.user);
+
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const data = await getUserProfile();
+        dispatch(setProfile(data));
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    };
+
+    getProfile();
+
+  }, [dispatch]);
 
   return (
     <header className={styles.header}>
