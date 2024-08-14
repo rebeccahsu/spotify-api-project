@@ -5,9 +5,18 @@
   padding: 20px;
   border-radius: 10px;
   transition: .6s;
+  cursor: pointer;
 
   &:hover {
     background-color: rgba($color: #fff, $alpha: 0.2);
+
+    .trackImage {
+      filter: grayscale(0%);
+    }
+
+    .imageContainer .playButton {
+      opacity: 1;
+    }
   }
 
   .imageContainer {
@@ -27,11 +36,22 @@
       transition: .6s;
       border-radius: 50%;
       transition: .6s ease-in-out;
+      box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.5);
     }
 
     .cdFigure.playing {
       opacity: 1;
       animation: rotate 15s linear infinite;
+    }
+
+    .playButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      opacity: 0;
+      transition: .3s;
     }
   }
 
@@ -49,6 +69,7 @@
 
   .previewAudio {
     width: 100%;
+    display: none;
   }
 }
 

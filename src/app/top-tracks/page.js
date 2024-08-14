@@ -1,8 +1,7 @@
 import TopTracks from "@/components/TopTracks";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
-export default async function HomePage() {
+export default async function TopTracksPage() {
   const token = cookies().get("access_token")?.value;
   console.log('token', token);
 
@@ -10,11 +9,7 @@ export default async function HomePage() {
     <div>
       {token ? (
         <div>
-          <Link
-            href="/top-tracks"
-          >
-            Top Tracks
-          </Link>
+          <TopTracks />
         </div>
       ) : (
         <h1>Not logged in</h1>

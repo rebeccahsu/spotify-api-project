@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import styles from "./trackItem.module.scss";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 
 export function TrackItem({ track }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
   const image = track.album.images[1];
 
@@ -20,6 +21,15 @@ export function TrackItem({ track }) {
     <div
       key={track.id}
       className={styles.trackItem}
+      onClick={() => {
+        if (audioRef.current) {
+          if (isPlaying) {
+            audioRef.current.pause();
+          } else {
+            audioRef.current.play();
+          }
+        }
+      }}
     >
       <div className={styles.imageContainer}>
         <Image
@@ -39,6 +49,10 @@ export function TrackItem({ track }) {
           layout="intrinsic"
           className={clsx(styles.cdFigure, isPlaying && styles.playing)}
         />
+
+        <div className={styles.playButton}>
+          {isPlaying ? "Pause" : "Play"}
+        </div>
       </div>
 
       <div className={styles.info}>
@@ -53,6 +67,7 @@ export function TrackItem({ track }) {
             controlsList="nofullscreen nodownload noplaybackrate foobar"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
+            ref={audioRef}
           >
             <source src={track.preview_url} type="audio/mpeg" />
             Your browser does not support the audio element.

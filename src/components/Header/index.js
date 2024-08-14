@@ -6,6 +6,7 @@ import { clearTopTracks } from "@/slices/topTracksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserProfile } from "@/lib/spotify";
+import Link from "next/link";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
@@ -57,6 +58,9 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
+      <Link href="/">
+        Home
+      </Link>
       {profile ? (
         <>
           <p>Hi, {profile.display_name}</p>
