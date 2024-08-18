@@ -1,13 +1,14 @@
 import TopTracks from "@/components/TopTracks";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import styles from "./page.module.scss";
 
 export default async function HomePage() {
   const token = cookies().get("access_token")?.value;
   console.log('token', token);
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       {token ? (
         <div>
           <Link

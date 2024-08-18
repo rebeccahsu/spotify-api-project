@@ -1,0 +1,84 @@
+.trackItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: .6s;
+  cursor: pointer;
+  border: 5px solid #fff;
+  height: 100vh;
+
+  &:hover {
+    background-color: rgba($color: #fff, $alpha: 0.2);
+
+    .trackImage {
+      filter: grayscale(0%);
+    }
+
+    .imageContainer .playButton {
+      opacity: 1;
+    }
+  }
+
+  .imageContainer {
+    position: relative;
+    flex-grow: 1;
+
+    .cdFigure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000, $alpha: 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: .6s;
+      border-radius: 50%;
+      transition: .6s ease-in-out;
+      box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.5);
+    }
+
+    .cdFigure.playing {
+      opacity: 1;
+      animation: rotate 15s linear infinite;
+    }
+
+    .playButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      opacity: 0;
+      transition: .3s;
+    }
+  }
+
+  .trackImage {
+    filter: grayscale(100%);
+    width: 100%;
+  }
+
+  .info {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .previewAudio {
+    // width: 100%;
+    // display: none;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -6,6 +6,10 @@
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
-
-  @include sectionHorizontalMargin();
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  
+  // @include sectionHorizontalMargin();
 }

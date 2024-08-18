@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './topTracks.module.scss';
-import { TrackItem } from "../TrackItem";
+import { TrackItem } from "../TrackItem2";
 import { useDispatch, useSelector } from "react-redux";
 import { setTopTracks } from "@/slices/topTracksSlice";
 import { useEffect } from "react";
@@ -32,7 +32,10 @@ export default function TopTracksView({ initialData }) {
 
         <div className={styles.list}>
           {data?.map((track) => (
-            <TrackItem key={track.id} track={track} />
+            <TrackItem
+              key={track.id}
+              track={track}
+            />
           ))}
         </div>
       </>

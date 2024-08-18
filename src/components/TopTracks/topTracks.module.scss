@@ -1,18 +1,23 @@
 @use "../../styles/utils.scss" as *;
 
 .topTracksSection {
-  @include sectionHorizontalMargin();
-  @include sectionVerticalMargin();
+  // @include sectionHorizontalMargin();
+  // @include sectionVerticalMargin();
+  position: relative;
+  // background-color: darkgray;
 
   .title {
     font-size: 20px;
     margin-bottom: 20px;
     font-weight: 500;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  // gap: 20px;
 }
