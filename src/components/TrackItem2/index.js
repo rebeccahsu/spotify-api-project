@@ -20,7 +20,7 @@ export function TrackItem({ track }) {
   return (
     <div
       key={track.id}
-      className={styles.trackItem}
+      className={clsx(styles.trackItem, "trackItem")}
       onClick={() => {
         // if (audioRef.current) {
         //   if (isPlaying) {
