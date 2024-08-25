@@ -81,6 +81,13 @@ export default function TracksCarouselView({ initialData }) {
           slidesPerView={1.2}
           centeredSlides
           loop
+          style={{
+            "--swiper-pagination-color": "#333",
+            "--swiper-pagination-bullet-inactive-color": "#fff",
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+            "--swiper-pagination-bullet-size": "3px",
+            "--swiper-pagination-bullet-horizontal-gap": "10px"
+          }}
         >
           {tracks?.map((track) => (
             <SwiperSlide
