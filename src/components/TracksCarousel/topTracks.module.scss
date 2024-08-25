@@ -1,0 +1,48 @@
+@use "../../styles/utils.scss" as *;
+
+.topTracksSection {
+  // @include sectionHorizontalMargin();
+  // @include sectionVerticalMargin();
+  position: relative;
+  // background-color: darkgray;
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}
+
+.carouselWrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  
+  .carousel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+  }
+}
+
+.currentTrackInfo {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(0, -50%);
+  z-index: 10;
+
+  .name {
+    font-size: 60px;
+  }
+}
