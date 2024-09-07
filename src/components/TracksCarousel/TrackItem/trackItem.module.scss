@@ -1,6 +1,7 @@
 .trackItem {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   transition: .6s;
   cursor: pointer;
@@ -20,14 +21,11 @@
 
   .imageContainer {
     position: relative;
-    flex-grow: 1;
     height: 100%;
-    margin-left: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    // width: 60%;
-    // transform: rotateY(30deg);
+    width: 60%;
     
 
     .playButton {

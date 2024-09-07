@@ -25,30 +25,6 @@ export function TrackItem({ track }) {
         }
       }}
     >
-      <div>
-        {/* <div className={styles.info}>
-          <p>{track.name}</p>
-          {renderArtists()}
-        </div> */}
-
-        <div className={styles.previewAudio}>
-          {track.preview_url ? (
-            <audio
-              controls
-              controlsList="nofullscreen nodownload noplaybackrate foobar"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              ref={audioRef}
-            >
-              <source src={track.preview_url} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          ) : (
-            <p>No preview available</p>
-          )}
-        </div>
-      </div>
-
       <div className={styles.imageContainer}>
         <Image
           src={image.url}
@@ -59,9 +35,26 @@ export function TrackItem({ track }) {
           className={styles.trackImage}
         />
 
-        <div className={styles.playButton}>
+        {/* <div className={styles.playButton}>
           {isPlaying ? "Pause" : "Play"}
-        </div>
+        </div> */}
+      </div>
+
+      <div className={styles.previewAudio}>
+        {track.preview_url ? (
+          <audio
+            controls
+            controlsList="nofullscreen nodownload noplaybackrate foobar"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            ref={audioRef}
+          >
+            <source src={track.preview_url} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        ) : (
+          <p>No preview available</p>
+        )}
       </div>
     </div>
   );

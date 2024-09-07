@@ -4,19 +4,18 @@ import styles from './topTracks.module.scss';
 import { TrackItem } from './TrackItem';
 import { useDispatch, useSelector } from "react-redux";
 import { setTopTracks } from "@/slices/topTracksSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import gsap from 'gsap';
-import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Mousewheel } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import clsx from 'clsx';
 
 export default function TracksCarouselView({ initialData }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile.user);
-  const ctx = useRef();
   const tracks = useSelector((state) => state.topTracks);
 
   const [currentTrack, setCurrentTrack] = useState(tracks[0]);
@@ -32,10 +31,17 @@ export default function TracksCarouselView({ initialData }) {
   }
   , [tracks]);
 
-  // console.log(profile, tracks);
+  const onRealIndexChange = (swiper) => {
+    setCurrentTrack(tracks[swiper.realIndex]);
+    gsap.fromTo(".currentTrackInfo",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 0.5 }
+    );
+    
+  }
 
   const renderCurrentTrackInfo = () => (
-    <div className={styles.currentTrackInfo}>
+    <div className={clsx(styles.currentTrackInfo, "currentTrackInfo")}>
       <h1 className={styles.name}>
         {currentTrack.name}
       </h1>
@@ -50,20 +56,6 @@ export default function TracksCarouselView({ initialData }) {
       <div>Login to view your top 5 tracks.</div>
     )
     : (
-      // <>
-      //   <h1 className={styles.title}>
-      //     Top 5 Tracks
-      //   </h1>
-
-      //   <div className={styles.list}>
-      //     {tracks?.map((track) => (
-      //       <TrackItem
-      //         key={track.id}
-      //         track={track}
-      //       />
-      //     ))}
-      //   </div>
-      // </>
       <div className={styles.carouselWrapper}>
         {currentTrack && renderCurrentTrackInfo()}
 
@@ -75,9 +67,7 @@ export default function TracksCarouselView({ initialData }) {
           mousewheel={true}
           modules={[Pagination, Mousewheel]}
           className={styles.carousel}
-          onRealIndexChange={(swiper) => {
-            setCurrentTrack(tracks[swiper.realIndex]);
-          }}
+          onRealIndexChange={onRealIndexChange}
           slidesPerView={1.2}
           centeredSlides
           loop
