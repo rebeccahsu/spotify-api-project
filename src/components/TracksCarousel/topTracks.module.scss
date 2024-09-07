@@ -1,11 +1,7 @@
 @use "../../styles/utils.scss" as *;
 
 .topTracksSection {
-  // @include sectionHorizontalMargin();
-  // @include sectionVerticalMargin();
   position: relative;
-  // background-color: darkgray;
-
   .title {
     font-size: 20px;
     margin-bottom: 20px;
@@ -41,6 +37,7 @@
   left: 0px;
   transform: translate(0, -50%);
   z-index: 10;
+  pointer-events: none;
 
   .name {
     font-size: 60px;

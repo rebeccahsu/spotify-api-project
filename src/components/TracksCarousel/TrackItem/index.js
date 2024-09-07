@@ -2,19 +2,26 @@
 
 import Image from "next/image";
 import styles from "./trackItem.module.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-export function TrackItem({ track }) {
+export function TrackItem({ track, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
   const image = track.album.images[1];
 
+  useEffect(() => {
+    console.log('currenttrack', currentTrack);
+    if (currentTrack && currentTrack.id !== track.id) {
+      setIsPlaying(false);
+    }
+  }, [currentTrack, track]);
+
   return (
     <div
       key={track.id}
-      className={clsx(styles.trackItem, "trackItem")}
+      className={clsx(styles.trackItem, isPlaying && styles.playing, "trackItem")}
       onClick={() => {
         if (audioRef.current) {
           if (isPlaying) {

@@ -86,6 +86,7 @@ export default function TracksCarouselView({ initialData }) {
             >
               <TrackItem
                 track={track}
+                currentTrack={currentTrack}
               />
             </SwiperSlide>
           ))}
