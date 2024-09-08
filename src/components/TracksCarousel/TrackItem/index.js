@@ -12,9 +12,9 @@ export function TrackItem({ track, currentTrack }) {
   const image = track.album.images[1];
 
   useEffect(() => {
-    console.log('currenttrack', currentTrack);
     if (currentTrack && currentTrack.id !== track.id) {
       setIsPlaying(false);
+      audioRef.current.pause();
     }
   }, [currentTrack, track]);
 
@@ -26,8 +26,10 @@ export function TrackItem({ track, currentTrack }) {
         if (audioRef.current) {
           if (isPlaying) {
             audioRef.current.pause();
+            setIsPlaying(false);
           } else {
             audioRef.current.play();
+            setIsPlaying(true);
           }
         }
       }}
@@ -41,10 +43,6 @@ export function TrackItem({ track, currentTrack }) {
           layout="intrinsic"
           className={styles.trackImage}
         />
-
-        {/* <div className={styles.playButton}>
-          {isPlaying ? "Pause" : "Play"}
-        </div> */}
       </div>
 
       <div className={styles.previewAudio}>
@@ -52,8 +50,6 @@ export function TrackItem({ track, currentTrack }) {
           <audio
             controls
             controlsList="nofullscreen nodownload noplaybackrate foobar"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
             ref={audioRef}
           >
             <source src={track.preview_url} type="audio/mpeg" />
