@@ -61,6 +61,9 @@ export default function Header() {
       <Link href="/">
         Home
       </Link>
+      <Link href="/stats">
+        Stats
+      </Link>
       <Link href="/top-tracks">
         Top Tracks
       </Link>
