@@ -30,10 +30,11 @@ export async function middleware(request) {
         },
       });
 
-      const { access_token } = response.data;
+      const { access_token, refresh_token } = response.data;
 
       const res = NextResponse.redirect(new URL('/', request.url));
       res.cookies.set('access_token', access_token, { httpOnly: true, path: '/' });
+      res.cookies.set('refresh_token', refresh_token, { httpOnly: true, path: '/' });
       return res;
     } catch (error) {
       console.error('Error fetching Spotify token:', error.response ? error.response.data : error.message);

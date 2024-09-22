@@ -54,6 +54,9 @@ export const getHost = () => {
 
 async function refreshToken() {
   const refreshToken = cookies().get('refresh_token')?.value; // Retrieve refresh token from cookies or storage
+  if (!refreshToken) {
+    throw new Error('No refresh token found');
+  }
 
   try {
     const response = await axios.post('https://accounts.spotify.com/api/token', new URLSearchParams({
@@ -69,9 +72,10 @@ async function refreshToken() {
       throw new Error('Failed to refresh token');
     }
 
-    const { access_token } = response.data;
+    const { access_token, refresh_token } = response.data;
     // Save the new access token in cookies or storage
     cookies().set('access_token', access_token, { path: '/' });
+    cookies().set('refresh_token', refresh_token, { path: '/' });
   } catch (error) {
     console.error('Error refreshing token:', error);
     throw error;
