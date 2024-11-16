@@ -4,6 +4,8 @@ import Image from "next/image";
 import styles from "./trackItem.module.scss";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import playButton from '../../../../public/play-button.svg';
+import pauseButton from '../../../../public/pause-button.svg';
 
 export function TrackItem({ track, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,23 +20,43 @@ export function TrackItem({ track, currentTrack }) {
     }
   }, [currentTrack, track]);
 
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  }
+
   return (
     <div
       key={track.id}
       className={clsx(styles.trackItem, isPlaying && styles.playing, "trackItem")}
-      onClick={() => {
-        if (audioRef.current) {
-          if (isPlaying) {
-            audioRef.current.pause();
-            setIsPlaying(false);
-          } else {
-            audioRef.current.play();
-            setIsPlaying(true);
-          }
-        }
-      }}
     >
-      <div className={styles.imageContainer}>
+      {isPlaying ? (
+          <Image
+            src={pauseButton}
+            width={50}
+            className={styles.controlButton}
+            onClick={togglePlay}
+          />
+        ) : (
+          <Image
+            src={playButton}
+            width={50}
+            className={styles.controlButton}
+            onClick={togglePlay}
+          />
+        )
+      }
+      <div
+        className={styles.imageContainer}
+        onClick={togglePlay}
+      >
         <Image
           src={image.url}
           alt={track.name}

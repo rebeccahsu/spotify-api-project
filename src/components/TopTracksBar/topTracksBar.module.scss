@@ -1,4 +1,23 @@
+@use '../../styles//utils.scss' as *;
+
 .container {
-  margin-top: 80px;
-  
+  // margin-top: 60px;
+  position: relative;
+}
+
+.pageTitle {
+  @include pageTitle() {
+    z-index: -1;
+    opacity: .2;
+  };
+}
+
+.barChartContainer {
+  width: 100%;
+  max-width: 1200px;
+  padding: 180px 20px 0px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

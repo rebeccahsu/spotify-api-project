@@ -10,7 +10,7 @@ export default async function HomePage() {
     <div className={styles.pageContainer}>
       {token ? (
         <div>
-          <h1>
+          <h1 className={styles.pageTitle}>
             YOUR TOP 5 TRACKS
           </h1>
           <TracksCarousel />

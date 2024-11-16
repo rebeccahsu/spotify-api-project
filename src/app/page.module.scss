@@ -1,3 +1,5 @@
+@use "../styles/utils.scss" as *;
+
 .main {
   display: flex;
   flex-direction: column;
@@ -229,6 +231,6 @@
   }
 }
 
-.pageContainer {
-  padding-top: 50px;
+.pageTitle {
+  @include pageTitle()
 }

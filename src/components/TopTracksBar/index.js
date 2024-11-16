@@ -22,11 +22,13 @@ export default function TopTracksBar({ topTracks}) {
 
   return (
     <div className={styles.container}>
-      <h2>最常播放的歌曲</h2>
-      <Bar
-        data={data}
-        options={options}
-      />
+      <h2 className={styles.pageTitle}>MOST POPULAR TRACKS</h2>
+      <div className={styles.barChartContainer}>
+        <Bar
+          data={data}
+          options={options}
+        />
+      </div>
     </div>
   );
 }

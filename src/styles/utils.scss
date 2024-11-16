@@ -19,3 +19,15 @@
   margin-top: 80px;
   margin-bottom: 80px;
 }
+
+@mixin pageTitle() {
+  font-size: 120px;
+  font-weight: 700;
+  margin-left: 2%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
+
+  @content;
+}
