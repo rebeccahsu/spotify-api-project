@@ -1,7 +1,6 @@
 'use server';
 
 import axios from 'axios';
-import { cookies } from 'next/headers';
 import { getHost, requestWithAuth } from '@/app/api/utils';
 
 const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;

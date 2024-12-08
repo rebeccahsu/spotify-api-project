@@ -4,7 +4,6 @@ import styles from "./page.module.scss";
 
 export default async function HomePage() {
   const token = cookies().get("access_token")?.value;
-  console.log('token', token);
 
   return (
     <div className={styles.pageContainer}>

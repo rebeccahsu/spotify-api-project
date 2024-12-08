@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { cookies } from 'next/headers';
 
-const cookieStore = cookies();
-const accessToken = cookieStore.get('access_token')?.value;
-
 export async function requestWithAuth(options) {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get('access_token')?.value;
+
   try {
     console.log(`[API] request: ${JSON.stringify(options, null, 2)}`);
     const result = await axios({

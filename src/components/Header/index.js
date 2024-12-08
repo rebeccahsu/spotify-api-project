@@ -64,9 +64,6 @@ export default function Header() {
       <Link href="/stats">
         Stats
       </Link>
-      <Link href="/top-tracks">
-        Top Tracks
-      </Link>
       {profile ? (
         <>
           <p>Hi, {profile.display_name}</p>

@@ -16,7 +16,9 @@ export function TrackItem({ track, currentTrack }) {
   useEffect(() => {
     if (currentTrack && currentTrack.id !== track.id) {
       setIsPlaying(false);
-      audioRef.current.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     }
   }, [currentTrack, track]);
 

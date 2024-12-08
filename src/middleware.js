@@ -1,7 +1,4 @@
-// middleware.js
-
 import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
 import axios from 'axios';
 
 export async function middleware(request) {
