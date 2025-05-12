@@ -73,7 +73,10 @@ export default function Header() {
           </button>
         </>
       ) : (
-        <button onClick={handleLogin}>
+        <button
+          onClick={handleLogin}
+          className={styles.loginButton}
+        >
           Login
         </button>
       )}

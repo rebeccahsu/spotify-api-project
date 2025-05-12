@@ -49,6 +49,7 @@ export async function requestWithAuth(options) {
 }
 
 export const getHost = () => {
+  console.log('SERVER HOST', process.env.SERVER_HOST);
   return process.env.SERVER_HOST;
 };
 

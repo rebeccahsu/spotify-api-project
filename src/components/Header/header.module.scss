@@ -12,4 +12,8 @@
   width: 100%;
   
   // @include sectionHorizontalMargin();
+
+  .loginButton {
+    @include customButton;
+  }
 }
