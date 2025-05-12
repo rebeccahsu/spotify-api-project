@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { getHost, requestWithAuth } from '@/app/api/utils';
+import { headers } from 'next/headers';
 
 const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -26,11 +27,16 @@ export const getSpotifyToken = async (code) => {
 };
 
 export const getUserProfile = async () => {
-  const response = await requestWithAuth({
-    url: `${getHost()}/me`,
-    method: 'GET'
-  });
-  return response?.data;
+  try {
+    const response = await requestWithAuth({
+      url: `https://api.spotify.com/v1/me`,
+      method: 'GET'
+    });
+  
+    return response.data;
+  } catch (err) {
+    console.log('err', err?.response?.status);
+  }
 };
 
 export const getUserTopTracks = async ({ limit }) => {
