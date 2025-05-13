@@ -53,7 +53,9 @@ export default function TracksCarouselView({ initialData }) {
 
   const renderContent = () => !profile
     ? (
-      <div>Login to view your top 5 tracks.</div>
+      <div style={{ paddingTop: 180 }}>
+        Login to view your top 5 tracks.
+      </div>
     )
     : (
       <div className={styles.carouselWrapper}>

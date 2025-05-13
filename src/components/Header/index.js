@@ -68,14 +68,17 @@ export default function Header() {
         <>
           <p>Hi, {profile.display_name}</p>
 
-          <button onClick={handleLogout}>
+          <button
+            onClick={handleLogout}
+            className={styles.button}
+          >
             Log out
           </button>
         </>
       ) : (
         <button
           onClick={handleLogin}
-          className={styles.loginButton}
+          className={styles.button}
         >
           Login
         </button>

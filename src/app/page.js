@@ -7,16 +7,21 @@ export default async function HomePage() {
 
   return (
     <div className={styles.pageContainer}>
-      {token ? (
-        <div>
-          <h1 className={styles.pageTitle}>
-            YOUR TOP 5 TRACKS
-          </h1>
+      <div>
+        <h1 className={styles.pageTitle}>
+          YOUR TOP 5 TRACKS
+        </h1>
+
+        {token ? (
           <TracksCarousel />
-        </div>
-      ) : (
-        <h1>Not logged in</h1>
-      )}
+        ) : (
+          <div className={styles.loginHintContainer}>
+            <h5 className={styles.loginHint}>
+              Please login to view.
+            </h5>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
